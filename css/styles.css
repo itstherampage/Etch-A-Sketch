@@ -5,6 +5,8 @@
 
 .container {
   display: flex;
+
+  /* this should be applying  */
   flex-direction: column;
   justify-content: center;
   align-items: center;
