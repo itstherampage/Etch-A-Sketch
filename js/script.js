@@ -1,5 +1,15 @@
 const gridContainer = document.querySelector(".grid-container");
-const input = document.querySelector(".input");
+const slider = document.querySelector(".slider");
+const sliderValue = document.querySelector("#sliderValue");
+const colorPicker = document.querySelector("#colorValue");
+
+const addMouseEnterListeners = () => {
+  getGridItems().forEach((item) => {
+    item.addEventListener("mouseenter", function (e) {
+      e.target.style.backgroundColor = colorPicker.value;
+    });
+  });
+};
 
 const makeRows = (rows, cols) => {
   gridContainer.style.setProperty("--grid-rows", rows);
@@ -9,28 +19,23 @@ const makeRows = (rows, cols) => {
     gridContainer.appendChild(cell).className = "grid-item";
   }
 };
-makeRows(4, 4);
 
 const getGridItems = () => {
   const gridItems = document.querySelectorAll(".grid-item");
   return gridItems;
 };
 
-input.addEventListener("change", function (e) {
-  let gridSize = e.target.value;
+slider.oninput = function () {
+  let gridSize = this.value;
+  sliderValue.textContent = `${gridSize}x${gridSize}`;
   while (gridContainer.firstChild) {
     gridContainer.removeChild(gridContainer.firstChild);
   }
   makeRows(gridSize, gridSize);
-  getGridItems().forEach((item) => {
-    item.addEventListener("mouseenter", function (e) {
-      e.target.style.backgroundColor = "black";
-    });
-  });
-});
+  addMouseEnterListeners();
+};
 
-getGridItems().forEach((item) => {
-  item.addEventListener("mouseenter", function (e) {
-    e.target.style.backgroundColor = "black";
-  });
-});
+window.onload = function () {
+  makeRows(32, 32);
+  addMouseEnterListeners();
+};
