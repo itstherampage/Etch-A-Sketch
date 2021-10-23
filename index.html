@@ -8,32 +8,20 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <div class="container">
-      <div class="controlsContainer">
-        <div class="colorContainer">
-          <input type="color" name="" id="colorValue" value="#000000" />
-        </div>
-        <div class="eraserButtonContainer">
-          <button class="button">Eraser</button>
-        </div>
-        <div class="clearButtonContainer">
-          <button class="button">Clear Grid</button>
-        </div>
-        <div class="sliderContainer">
-          <p id="sliderValue">32x32</p>
-          <input
-            class="slider"
-            type="range"
-            name="gridSize"
-            min="1"
-            max="64"
-            value="32"
-          />
-        </div>
-      </div>
-      <div class="grid-container"></div>
+    <div class="header">
+      <h1>Etch A Sketch</h1>
     </div>
-    <div class="footer">Logan Wright</div>
+    <div class="container">
+      <div class="controls">
+        <input class="colorPicker" type="color" name="" id="" />
+        <input class="button" type="button" value="Eraser" />
+        <input class="button" type="button" value="Clear" />
+        <input class="button" type="range" name="" id="slider" />
+      </div>
+      <div class="gridContainer"></div>
+    </div>
+    <div class="footer"><p>Copyright Logan Wright</p></div>
+
     <script src="./js/script.js"></script>
   </body>
 </html>

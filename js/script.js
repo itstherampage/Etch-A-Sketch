@@ -1,7 +1,8 @@
-const gridContainer = document.querySelector(".grid-container");
-const slider = document.querySelector(".slider");
-const sliderValue = document.querySelector("#sliderValue");
-const colorPicker = document.querySelector("#colorValue");
+const gridContainer = document.querySelector(".gridContainer");
+
+// const sliderValue = document.querySelector("#sliderValue");
+const colorPicker = document.querySelector(".colorPicker");
+const slider = document.querySelector("#slider");
 
 const addMouseEnterListeners = () => {
   getGridItems().forEach((item) => {
@@ -25,9 +26,10 @@ const getGridItems = () => {
   return gridItems;
 };
 
+// need to change this so it only updates afte the slider is done
 slider.oninput = function () {
   let gridSize = this.value;
-  sliderValue.textContent = `${gridSize}x${gridSize}`;
+  // sliderValue.textContent = `${gridSize}x${gridSize}`;
   while (gridContainer.firstChild) {
     gridContainer.removeChild(gridContainer.firstChild);
   }
@@ -35,7 +37,5 @@ slider.oninput = function () {
   addMouseEnterListeners();
 };
 
-window.onload = function () {
-  makeRows(32, 32);
-  addMouseEnterListeners();
-};
+makeRows(16, 16);
+addMouseEnterListeners();
