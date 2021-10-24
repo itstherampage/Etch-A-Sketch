@@ -1,6 +1,6 @@
 const gridContainer = document.querySelector(".gridContainer");
 
-// const sliderValue = document.querySelector("#sliderValue");
+const sliderValue = document.querySelector("#sliderValue");
 const colorPicker = document.querySelector(".colorPicker");
 const slider = document.querySelector("#slider");
 
@@ -27,14 +27,17 @@ const getGridItems = () => {
 };
 
 // need to change this so it only updates afte the slider is done
-slider.oninput = function () {
+slider.onchange = function () {
   let gridSize = this.value;
-  // sliderValue.textContent = `${gridSize}x${gridSize}`;
   while (gridContainer.firstChild) {
     gridContainer.removeChild(gridContainer.firstChild);
   }
   makeRows(gridSize, gridSize);
   addMouseEnterListeners();
+};
+slider.oninput = function () {
+  let gridSize = this.value;
+  sliderValue.textContent = `${gridSize}x${gridSize}`;
 };
 
 makeRows(16, 16);
