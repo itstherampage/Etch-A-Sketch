@@ -7,6 +7,10 @@
   --grid-cols: 1;
   --grid-rows: 1;
 }
+body {
+  background-color: rgb(207, 207, 207, 0.658);
+  font-family: "Oswald", sans-serif;
+}
 
 .header {
   text-align: center;
@@ -37,7 +41,16 @@
   height: 500px;
   grid-template-rows: repeat(var(--grid-rows), 1fr);
   grid-template-columns: repeat(var(--grid-cols), 1fr);
-  box-shadow: rgba(207, 207, 207, 0.658);
+  box-shadow: 10px 12px 10px 1px rgba(207, 207, 207, 0.658);
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .grid-item {
@@ -50,10 +63,22 @@
 }
 
 .button {
-  padding: 5px 20px;
-  background-color: rgba(6, 113, 207, 0.767);
-  color: white;
+  padding: 10px;
+  text-align: center;
+  width: 150px;
+  background-color: rgb(255, 255, 255);
+  color: black;
   border-radius: 5px;
-  outline: none;
-  border: none;
+  transition: all 0.15s;
+}
+
+.btn-down {
+  background-color: rgb(63, 66, 70);
+  color: white;
+}
+
+.button:hover {
+  background-color: rgba(63, 66, 70);
+  color: white;
+  transform: scale(1.05);
 }

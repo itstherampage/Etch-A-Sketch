@@ -4,18 +4,31 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Etch A Sketch</title>
+    <title>Etch a Sketch</title>
     <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="header">
-      <h1>Etch A Sketch</h1>
+      <h1>Etch a Sketch</h1>
     </div>
     <div class="container">
       <div class="controls">
-        <input class="colorPicker" type="color" name="" id="" />
-        <input class="button" type="button" value="Eraser" />
-        <input class="button" type="button" value="Clear" />
+        <input type="color" name="" id="colorPickerButton" />
+        <input class="button" type="button" value="Color" id="colorButton" />
+        <input
+          class="button"
+          type="button"
+          value="Rainbow"
+          id="rainbowButton"
+        />
+        <input class="button" type="button" value="Eraser" id="eraserButton" />
+        <input class="button" type="button" value="Clear" id="clearButton" />
         <div class="sliderContainer">
           <p id="sliderValue">32x32</p>
           <input type="range" name="" id="slider" min="1" max="64" />
@@ -23,7 +36,7 @@
       </div>
       <div class="gridContainer"></div>
     </div>
-
+    <div class="footer">Copyright © 2021 Logan Wright</div>
     <script src="./js/script.js"></script>
   </body>
 </html>
