@@ -24,6 +24,7 @@ const setCurrentSize = (newSize) => {
 };
 
 const setCurrentMode = (newMode) => {
+  activateButton(newMode);
   currentMode = newMode;
 };
 
@@ -31,9 +32,32 @@ colorPicker.onchange = (e) => setCurrentColor(e.target.value);
 colorButton.onclick = () => setCurrentMode("Color");
 rainbowButton.onclick = () => setCurrentMode("Rainbow");
 eraserButton.onclick = () => setCurrentMode("Eraser");
-clearButton.onclick = () => reloadGrid();
+clearButton.onclick = () => resetGrid();
+slider.onmousemove = (e) => updateSizeValue(e.target.value);
+slider.onchange = (e) => updateSize(e.target.value);
 
-const makeRows = (rows, cols) => {
+const updateSize = (size) => {
+  setCurrentSize(size);
+  updateSizeValue(size);
+  resetGrid();
+};
+
+const updateSizeValue = (value) => {
+  sliderValue.textContent = `${value} x ${value}`;
+};
+
+const clearGrid = () => {
+  while (gridContainer.firstChild) {
+    gridContainer.removeChild(gridContainer.firstChild);
+  }
+};
+
+const resetGrid = () => {
+  clearGrid();
+  makeGrid(currentSize, currentSize);
+};
+
+const makeGrid = (rows, cols) => {
   gridContainer.style.setProperty("--grid-rows", rows);
   gridContainer.style.setProperty("--grid-cols", cols);
   for (c = 0; c < rows * cols; c++) {
@@ -45,12 +69,14 @@ const makeRows = (rows, cols) => {
 
 const colorChange = (e) => {
   if (currentMode === "Rainbow") {
-    let valueOne = Math.floor(Math.random * 256);
-    let valueTwo = Math.floor(Math.random * 256);
-    let valueThree = Math.floor(Math.random * 256);
-    e.target.backgroundColor = `rgb(${valueOne},${valueTwo},${valueThree})`;
+    let valueOne = Math.floor(Math.random() * 256);
+    let valueTwo = Math.floor(Math.random() * 256);
+    let valueThree = Math.floor(Math.random() * 256);
+    e.target.style.backgroundColor = `rgb(${valueOne},${valueTwo},${valueThree})`;
   } else if (currentMode === "Color") {
     e.target.style.backgroundColor = currentColor;
+  } else if (currentMode === "Eraser") {
+    e.target.style.backgroundColor = "#ffffff";
   }
 };
 
@@ -73,6 +99,6 @@ const activateButton = (newMode) => {
 };
 
 window.onload = () => {
-  makeRows(DEFAULT_SIZE, DEFAULT_SIZE);
+  makeGrid(DEFAULT_SIZE, DEFAULT_SIZE);
   activateButton(DEFAULT_MODE);
 };
